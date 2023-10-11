@@ -20,7 +20,7 @@ themeSwitchButton.onclick = () => {
 };
 
 const fetchqotd = () => {
-    fetch("http://localhost:8080/api/") // Maybe use a framework to dynamically change this in production?
+    fetch(location.origin + "/api/")
         .then((response) => response.json())
         .then((data) => {
             quoteText.innerText = '"' + data.quote + '"';
