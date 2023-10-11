@@ -20,7 +20,7 @@ themeSwitchButton.onclick = () => {
 };
 
 const fetchqotd = () => {
-    fetch(location.origin + "/api/")
+    fetch("/api")
         .then((response) => response.json())
         .then((data) => {
             quoteText.innerText = '"' + data.quote + '"';
