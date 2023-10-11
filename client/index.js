@@ -23,7 +23,7 @@ const fetchqotd = () => {
     fetch("http://localhost:8080/api/") // Maybe use a framework to dynamically change this in production?
         .then((response) => response.json())
         .then((data) => {
-            quoteText.innerText = data.quote;
+            quoteText.innerText = '"' + data.quote + '"';
         })
         .catch((err) => {
             quoteText.innerText = "ERROR: Couldn't fetch latest quote of the day";
