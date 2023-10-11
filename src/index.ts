@@ -4,6 +4,7 @@ import "dotenv/config"
 const PORT = process.env.PORT || 8080;
 
 const app: Application = express();
+const CWD = process.env.INIT_CWD;
 
 const quotes: Array<string> = [
     "I'm a teapot",
@@ -12,6 +13,7 @@ const quotes: Array<string> = [
 ];
 
 app.use(express.static("public"));
+app.use("/chota.css", express.static(CWD + "/node_modules/chota/dist/chota.css"));
 app.use("/assets", express.static(__dirname + "/public/assets"))
 
 app.use((_req, res, next) => {
