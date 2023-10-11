@@ -5,6 +5,8 @@ const assetLightMode = "assets/light_mode.svg"
 const themeSwitchButton = document.getElementById("theme-switch");
 const themeSwitchImage = themeSwitchButton.firstElementChild;
 
+const quoteText = document.getElementById("quote");
+
 themeSwitchButton.onclick = () => {
     const bodyClass = document.body.classList;
 
@@ -16,3 +18,17 @@ themeSwitchButton.onclick = () => {
         bodyClass.add("dark");
     }
 };
+
+const fetchqotd = () => {
+    fetch("http://localhost:8080/api/") // Maybe use a framework to dynamically change this in production?
+        .then((response) => response.json())
+        .then((data) => {
+            quoteText.innerText = data.quote;
+        })
+        .catch((err) => {
+            quoteText.innerText = "ERROR: Couldn't fetch latest quote of the day";
+            console.error(err);
+        });
+}
+
+fetchqotd();
