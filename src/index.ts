@@ -19,13 +19,13 @@ app.use((_req, res, next) => {
     next();
 });
 
-app.get("/api", (_req, res) => {
+app.get("/api/quote/latest", (_req, res) => {
     res.send({
         quote: quotes[quotes.length - 1]
     });
 });
 
-app.get("/api/:index", (req, res) => {
+app.get("/api/quote/:index", (req, res) => {
     const index = parseInt(req.params.index);
 
     if (isNaN(index)) {
