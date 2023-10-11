@@ -43,5 +43,6 @@ app.get("/api/:index", (req, res) => {
     });
 });
 
-console.log("Listening on port " + PORT);
-app.listen(PORT);
+app.listen(PORT, () => {
+    console.log("Server started at http://localhost:" + PORT);
+});
