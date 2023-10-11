@@ -11,23 +11,31 @@ const quotes: Array<string> = [
 ];
 
 app.get("/", (_req, res) => {
-    res.send(quotes[quotes.length - 1]);
+    res.send({
+        quote: quotes[quotes.length - 1]
+    });
 });
 
 app.get("/:index", (req, res) => {
     const index = parseInt(req.params.index);
 
     if (isNaN(index)) {
-        res.send("NaN");
+        res.status(400).send({
+            error: "Index is NaN"
+        });
         return;
     }
 
     if (index < 0 || index >= quotes.length) {
-        res.send("Out of bounds");
+        res.status(406).send({
+            error: "Out of Bounds"
+        });
         return;
     }
 
-    res.send(quotes[index]);
+    res.send({
+        quote: quotes[index]
+    });
 });
 
 console.log("Listening on port " + PORT);
