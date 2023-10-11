@@ -10,13 +10,13 @@ const quotes: Array<string> = [
     "the end is never the end is never the end..."
 ];
 
-app.get("/", (_req, res) => {
+app.get("/api", (_req, res) => {
     res.send({
         quote: quotes[quotes.length - 1]
     });
 });
 
-app.get("/:index", (req, res) => {
+app.get("/api/:index", (req, res) => {
     const index = parseInt(req.params.index);
 
     if (isNaN(index)) {
