@@ -34,7 +34,7 @@ app.get("/:index", (req, res) => {
     }
 
     res.send({
-        quote: quotes[index]
+        data: quotes[index]
     });
 });
 
