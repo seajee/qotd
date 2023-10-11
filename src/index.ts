@@ -1,4 +1,5 @@
 import express, { Application } from "express";
+import "dotenv/config"
 
 const PORT = process.env.PORT || 8080;
 
