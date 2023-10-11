@@ -30,3 +30,7 @@ body.dark .theme-toggle {
     flex: 1;
     flex-direction: column;
 }
+
+.quote {
+    padding: 10%;
+}
