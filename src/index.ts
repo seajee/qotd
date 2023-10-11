@@ -10,6 +10,9 @@ const quotes: Array<string> = [
     "the end is never the end is never the end..."
 ];
 
+app.use(express.static("public"));
+app.use("/assets", express.static(__dirname + "/public/assets"))
+
 app.use((_req, res, next) => {
     res.append("Access-Control-Allow-Origin", "*");
     next();

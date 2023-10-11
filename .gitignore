@@ -1,5 +1,5 @@
-server/node_modules/
-server/package-lock.json
-server/build/
+node_modules/
+package-lock.json
+build/
 
 .DS_Store
