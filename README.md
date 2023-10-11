@@ -7,5 +7,6 @@ A website for showing quotes, everyday.
 To build and run the project run the following
 
 ```bash
+npm install
 npm run dev
 ```
