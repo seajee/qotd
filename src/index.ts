@@ -2,9 +2,9 @@ import express, { Application } from "express";
 import "dotenv/config"
 
 const PORT = process.env.PORT || 8080;
+const CWD = process.env.INIT_CWD;
 
 const app: Application = express();
-const CWD = process.env.INIT_CWD;
 
 const quotes: Array<string> = [
     "I'm a teapot",
