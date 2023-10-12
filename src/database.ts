@@ -5,10 +5,11 @@ const DB_COLUMN = process.env.DB_COLUMN;
 const DB_TABLE = process.env.DB_TABLE;
 
 const con = sql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWD,
-    database: process.env.DB_NAME
+    // TODO: Define this environment variables
+    host: process.env.DB_HOST,       // Currently undefined
+    user: process.env.DB_USER,       // Currently undefined
+    password: process.env.DB_PASSWD, // Currently undefined
+    database: process.env.DB_NAME    // Currently undefined
 });
 
 function fetchLatestQuote() {
