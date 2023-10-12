@@ -11,22 +11,34 @@ const con = sql.createConnection({
     database: process.env.DB_NAME    // Currently undefined
 });
 
-function fetchLatestQuote() {
+function fetchLatestQuote(): string {
+    let response: string = "";
+
     con.connect((err) => {
         if (err) throw err;
-        con.query('SELECT ' + DB_COLUMN + ' FROM '+ DB_TABLE + ' DESC LIMIT 0,1', function (err, result, fields) {
+        con.query('SELECT ' + DB_COLUMN + ' FROM '+ DB_TABLE + ' DESC LIMIT 0,1', (err, result, _fields) => {
             if (err) throw err;
-            return result[0].quote;
+            response = result[0].quote;
         });
     });
+
+    return response;
 }
 
-function fetchQuote(id: string){
+function fetchQuote(id: number): string {
+    const idString = id.toString();
+    let response: string = "";
+
     con.connect((err) => {
         if (err) throw err;
-        con.query('SELECT ' + DB_COLUMN + ' FROM '+ DB_TABLE +' WHERE id = ' + id, function (err, result, fields) {
+        con.query('SELECT ' + DB_COLUMN + ' FROM '+ DB_TABLE +' WHERE id = ' + idString, (err, result, _fields) => {
             if (err) throw err;
-            return result[0].quote;
+            response = result[0].quote;
         });
     });
+
+    return response;
 }
+
+export { fetchLatestQuote };
+export { fetchQuote };

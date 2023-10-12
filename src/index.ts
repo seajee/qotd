@@ -1,8 +1,8 @@
 import express, { Application } from "express";
 import "dotenv/config"
 
-import staticRouter from "./static"
-import apiRouter from "./api";
+import { staticRouter } from "./static"
+import { apiRouter } from "./api";
 
 // Constants
 const PORT = process.env.SERVER_PORT || 8080;
