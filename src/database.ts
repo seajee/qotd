@@ -5,10 +5,10 @@ const DB_TABLE = process.env.DB_TABLE;
 
 const db = sql.createConnection({
     // TODO: Define this environment variables
-    host: process.env.DB_HOST,       // Currently undefined
+    // host: process.env.DB_HOST,       // Currently undefined
     user: process.env.DB_USER,       // Currently undefined
-    password: process.env.DB_PASSWD, // Currently undefined
-    database: process.env.DB_NAME    // Currently undefined
+    password: process.env.DB_PASSWORD, // Currently undefined
+    // database: process.env.DB_NAME    // Currently undefined
 });
 
 db.connect((err) => {
