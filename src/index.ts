@@ -5,7 +5,7 @@ import staticRouter from "./static"
 import apiRouter from "./api";
 
 // Constants
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.SERVER_PORT || 8080;
 
 const app: Application = express();
 
