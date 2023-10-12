@@ -1,4 +1,3 @@
-
 const quotes: Array<string> = [
     "I'm a teapot",
     "Testing testing, 1, 2, 3",
