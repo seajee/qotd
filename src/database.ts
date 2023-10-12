@@ -16,10 +16,13 @@ function fetchLatestQuote(): string {
 
     con.connect((err) => {
         if (err) throw err;
-        con.query('SELECT ' + DB_COLUMN + ' FROM '+ DB_TABLE + ' DESC LIMIT 0,1', (err, result, _fields) => {
-            if (err) throw err;
-            response = result[0].quote;
-        });
+        con.query(
+            'SELECT ' + DB_COLUMN + ' FROM ' + DB_TABLE + ' DESC LIMIT 0,1',
+            (err, result, _fields) => {
+                if (err) throw err;
+                response = result[0].quote;
+            }
+        );
     });
 
     return response;
@@ -31,10 +34,13 @@ function fetchQuote(id: number): string {
 
     con.connect((err) => {
         if (err) throw err;
-        con.query('SELECT ' + DB_COLUMN + ' FROM '+ DB_TABLE +' WHERE id = ' + idString, (err, result, _fields) => {
-            if (err) throw err;
-            response = result[0].quote;
-        });
+        con.query(
+            'SELECT ' + DB_COLUMN + ' FROM ' + DB_TABLE + ' WHERE id = ' + idString,
+            (err, result, _fields) => {
+                if (err) throw err;
+                response = result[0].quote;
+            }
+        );
     });
 
     return response;
