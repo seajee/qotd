@@ -8,4 +8,4 @@ staticRouter.use(express.static("public"));
 staticRouter.use("/chota.css", express.static(CWD + "/node_modules/chota/dist/chota.css"));
 staticRouter.use("/assets", express.static(__dirname + "/public/assets"))
 
-export = staticRouter;
+export { staticRouter };
