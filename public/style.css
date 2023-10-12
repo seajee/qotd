@@ -1,3 +1,7 @@
+:root {
+    font-size: 1.2vmax;
+}
+
 body.dark {
     --bg-color: #000;
     --bg-secondary-color: #262626;
@@ -31,6 +35,12 @@ body.dark .theme-toggle {
     flex-direction: column;
 }
 
+#theme-switch {
+    margin: 0;
+    padding: 0;
+}
+
 .quote {
-    padding: 10%;
+    margin: 10%;
+    font-size: 4vmax;
 }
