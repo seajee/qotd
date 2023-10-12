@@ -7,6 +7,6 @@ services:
     ports:
       - "${DB_PORT}:3306"
     volumes:
-      - db:/var/lib/mysql 
+      - ./db:/var/lib/mysql 
     environment:
       MARIADB_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
