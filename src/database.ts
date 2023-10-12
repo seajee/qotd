@@ -2,6 +2,7 @@ import sql from "mysql"
 
 const DB_COLUMN = process.env.DB_COLUMN;
 const DB_TABLE = process.env.DB_TABLE;
+const DB_NAME = process.env.DB_NAME;
 
 const db = sql.createConnection({
     // TODO: Define this environment variables
@@ -42,6 +43,22 @@ function fetchQuote(id: number): string {
     );
 
     return response;
+}
+
+function setupDatabase(){
+    db.query(
+        ["CREATE", "DATABASE", "IF", "NOT", "EXISTS", DB_NAME].join(" "),
+        (err, result, _fields) => {
+            if (err) throw err;
+        }
+    );
+
+    db.query(
+        ["CREATE", "DATABASE", DB_NAME].join(" "),
+        (err, result, _fields) => {
+            if (err) throw err;
+        }
+    );
 }
 
 export { fetchLatestQuote };
