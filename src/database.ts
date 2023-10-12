@@ -1,5 +1,4 @@
 import sql from "mysql"
-import "dotenv/config"
 
 const DB_COLUMN = process.env.DB_COLUMN;
 const DB_TABLE = process.env.DB_TABLE;
