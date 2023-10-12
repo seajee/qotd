@@ -36,8 +36,16 @@ body.dark .theme-toggle {
 }
 
 #theme-switch {
+    width: 40%;
     margin: 0;
     padding: 0;
+}
+
+#theme-switch > img {
+    width: 40%;
+    margin-left: auto;
+    margin-right: 0;
+    object-fit: fill;
 }
 
 .quote {
