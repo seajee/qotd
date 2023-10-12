@@ -12,7 +12,7 @@ const con = sql.createConnection({
 });
 
 function fetchLatestQuote() {
-    con.connect(function(err) {
+    con.connect((err) => {
         if (err) throw err;
         con.query('SELECT ' + DB_COLUMN + ' FROM '+ DB_TABLE + ' DESC LIMIT 0,1', function (err, result, fields) {
             if (err) throw err;
@@ -22,7 +22,7 @@ function fetchLatestQuote() {
 }
 
 function fetchQuote(id: string){
-    con.connect(function(err) {
+    con.connect((err) => {
         if (err) throw err;
         con.query('SELECT ' + DB_COLUMN + ' FROM '+ DB_TABLE +' WHERE id = ' + id, function (err, result, fields) {
             if (err) throw err;
