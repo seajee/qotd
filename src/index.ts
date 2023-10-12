@@ -1,56 +1,19 @@
 import express, { Application } from "express";
 import "dotenv/config"
 
+import staticRouter from "./static"
+import apiRouter from "./api";
+
 // Constants
 const PORT = process.env.PORT || 8080;
-const CWD = process.env.INIT_CWD;
 
 const app: Application = express();
-const quotes: Array<string> = [
-    "I'm a teapot",
-    "Testing testing, 1, 2, 3",
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "the end is never the end is never the end..."
-];
 
 // Static content
-app.use(express.static("public"));
-app.use("/chota.css", express.static(CWD + "/node_modules/chota/dist/chota.css"));
-app.use("/assets", express.static(__dirname + "/public/assets"))
+app.use("/", staticRouter);
 
 // API
-app.use((_req, res, next) => {
-    res.append("Access-Control-Allow-Origin", "*");
-    next();
-});
-
-app.get("/api/quote/latest", (_req, res) => {
-    res.send({
-        quote: quotes[quotes.length - 1]
-    });
-});
-
-app.get("/api/quote/:index", (req, res) => {
-    const index = parseInt(req.params.index);
-
-    if (isNaN(index)) {
-        res.status(400).send({
-            error: "Index is NaN"
-        });
-        return;
-    }
-
-    if (index < 0 || index >= quotes.length) {
-        res.status(406).send({
-            error: "Out of Bounds"
-        });
-        return;
-    }
-
-    res.send({
-        quote: quotes[index]
-    });
-});
+app.use("/api", apiRouter);
 
 // Start the server
 app.listen(PORT, () => {
