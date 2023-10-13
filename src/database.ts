@@ -59,11 +59,13 @@ function fetchLatestQuote(): string {
                 response = "DATABASE ERROR";
                 return;
             }
+            console.log("fuck: " + response);
             response = result[0].quote;
-            console.log(result);
+            console.log("shit: " + response);
         }
     );
 
+    console.log("After: " + response);
     return response;
 }
 
