@@ -52,7 +52,6 @@ function fetchLatestQuote(): string {
     let response: string = "";
 
     db.query(
-        // ["SELECT", DB_COLUMN, "FROM", DB_TABLE, "DESC LIMIT 0,1"].join(" "),
         ["SELECT", "*", "FROM", DB_TABLE, "ORDER BY", "id", "DESC LIMIT 0,1"].join(" "),
         (err, result, _fields) => {
             if (err) {
