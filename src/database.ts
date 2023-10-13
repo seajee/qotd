@@ -58,7 +58,8 @@ function fetchLatestQuote(callback: (quote: string) => void): void {
                 console.log(err);
                 response = "DATABASE ERROR";
             } else {
-                response = result[0].quote || "Null";
+                const quote = result[0].quote;
+                response = (quote === undefined) ? "Null" : quote;
             }
 
             callback(response);
@@ -78,7 +79,8 @@ function fetchQuote(id: number, callback: (quote: string) => void): void {
                 console.log(err);
                 response = "DATABASE ERROR";
             } else {
-                response = result[0].quote || "Null";
+                const quote = result[0].quote;
+                response = (quote === undefined) ? "Null" : quote;
             }
 
             callback(response);
