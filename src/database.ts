@@ -90,8 +90,20 @@ function fetchQuote(id: number, callback: (quote: string) => void): void {
     );
 }
 
+function addQuote(quote: string): void {
+    db.query(
+        ["INSERT INTO", DB_TABLE, `(${DB_COLUMN})`, "VALUES", `("${quote}")`].join(" "),
+        (err, _result, _fields) => {
+            if (err) {
+                console.log(err);
+            }
+        }
+    );
+}
+
 export {
     setupDatabase,
     fetchLatestQuote,
-    fetchQuote
+    fetchQuote,
+    addQuote
 };
