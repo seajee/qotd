@@ -3,15 +3,16 @@ import sql from "mysql"
 const {
     DB_HOST,
     DB_USER,
-    DB_PASSWORD,
+    DB_ROOT_PASSWORD,
     DB_NAME,
     DB_COLUMN,
     DB_TABLE
 } = process.env;
 
+// TODO: Remove debug logs
 console.log(DB_HOST);
 console.log(DB_USER);
-console.log(DB_PASSWORD);
+console.log(DB_ROOT_PASSWORD);
 console.log(DB_NAME);
 console.log(DB_COLUMN);
 console.log(DB_TABLE);
@@ -19,7 +20,7 @@ console.log(DB_TABLE);
 const db = sql.createConnection({
     host: DB_HOST,
     user: DB_USER,
-    password: DB_PASSWORD,
+    password: DB_ROOT_PASSWORD,
     database: DB_NAME
 });
 
