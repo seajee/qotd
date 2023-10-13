@@ -36,7 +36,7 @@ function setupDatabase(){
 
     db.query(
         `
-        "CREATE TABLE IF NOT EXISTS ${DB_TABLE} (
+        CREATE TABLE IF NOT EXISTS ${DB_TABLE} (
             id INT unsigned NOT NULL AUTO_INCREMENT,
             quote VARCHAR(2048) NOT NULL DEFAULT '',
             date TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
