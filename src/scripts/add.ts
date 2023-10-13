@@ -11,6 +11,6 @@ if (quote === "") {
 }
 
 setupDatabase();
-addQuote(quote);
-
-process.exit();
+addQuote(quote, () => {
+    process.exit();
+});
