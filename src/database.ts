@@ -60,6 +60,7 @@ function fetchLatestQuote(): string {
                 return;
             }
             response = result[0].quote;
+            console.log(result);
         }
     );
 
