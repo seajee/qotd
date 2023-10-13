@@ -28,7 +28,7 @@ function setupDatabase(){
     );
 
     db.query(
-        ["USE", "DATABASE", DB_NAME].join(" "),
+        ["USE", DB_NAME].join(" "),
         (err, _result, _fields) => {
             if (err) throw err;
         }
