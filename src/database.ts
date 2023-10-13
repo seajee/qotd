@@ -9,19 +9,11 @@ const {
     DB_TABLE
 } = process.env;
 
-// TODO: Remove debug logs
-console.log(DB_HOST);
-console.log(DB_USER);
-console.log(DB_ROOT_PASSWORD);
-console.log(DB_NAME);
-console.log(DB_COLUMN);
-console.log(DB_TABLE);
-
 const db = sql.createConnection({
     host: DB_HOST,
     user: DB_USER,
     password: DB_ROOT_PASSWORD,
-    database: DB_NAME
+    database: DB_NAME // TODO: If database doesn't initially exist, the connection fails
 });
 
 db.connect((err) => {
@@ -31,13 +23,6 @@ db.connect((err) => {
 function setupDatabase(){
     db.query(
         ["CREATE", "DATABASE", "IF", "NOT", "EXISTS", DB_NAME].join(" "),
-        (err, _result, _fields) => {
-            if (err) throw err;
-        }
-    );
-
-    db.query(
-        ["CREATE", "DATABASE", DB_NAME].join(" "),
         (err, _result, _fields) => {
             if (err) throw err;
         }
