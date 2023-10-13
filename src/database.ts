@@ -33,6 +33,20 @@ function setupDatabase(){
             if (err) throw err;
         }
     );
+
+    db.query(
+        `
+        "CREATE TABLE IF NOT EXISTS ${DB_TABLE} (
+            id INT unsigned NOT NULL AUTO_INCREMENT,
+            quote VARCHAR(2048) NOT NULL DEFAULT '',
+            date TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            PRIMARY KEY (id)
+        );
+        `,
+        (err, _result, _fields) => {
+            if (err) throw err;
+        }
+    )
 }
 
 function fetchLatestQuote(): string {
