@@ -1,4 +1,4 @@
-import { addQuote } from "../database";
+import { addQuote, setupDatabase } from "../database";
 
 const [ _node, _file, ...args ] = process.argv;
 
@@ -9,4 +9,5 @@ if (quote === "") {
     process.exit(1);
 }
 
+setupDatabase();
 addQuote(quote);
