@@ -9,6 +9,13 @@ const {
     DB_TABLE
 } = process.env;
 
+console.log(DB_HOST);
+console.log(DB_USER);
+console.log(DB_PASSWORD);
+console.log(DB_NAME);
+console.log(DB_COLUMN);
+console.log(DB_TABLE);
+
 const db = sql.createConnection({
     host: DB_HOST,
     user: DB_USER,
