@@ -1,3 +1,4 @@
+import "dotenv/config"
 import { addQuote, setupDatabase } from "../database";
 
 const [ _node, _file, ...args ] = process.argv;
