@@ -10,9 +10,10 @@ apiRouter.use((_req, res, next) => {
 });
 
 apiRouter.get("/quote/latest", (_req, res) => {
-    const latestQuote = fetchLatestQuote();
-    res.send({
-        quote: latestQuote
+    fetchLatestQuote((quote) => {
+        res.send({
+            quote: quote
+        });
     });
 });
 
@@ -26,11 +27,12 @@ apiRouter.get("/quote/:index", (req, res) => {
         return;
     }
 
-    const quote = fetchQuote(id);
-
-    res.send({
-        quote: quote
+    fetchQuote(id, (quote) => {
+        res.send({
+            quote: quote
+        });
     });
+
 });
 
 

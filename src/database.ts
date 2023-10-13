@@ -48,41 +48,42 @@ function setupDatabase(){
     )
 }
 
-function fetchLatestQuote(): string {
-    let response: string = "";
-
+function fetchLatestQuote(callback: (quote: string) => void): void {
     db.query(
         ["SELECT", "*", "FROM", DB_TABLE, "ORDER BY", "id", "DESC LIMIT 0,1"].join(" "),
         (err, result, _fields) => {
+            let response: string = "";
+
             if (err) {
                 console.log(err);
                 response = "DATABASE ERROR";
-                return;
+            } else {
+                response = result[0].quote || "Null";
             }
-            response = result[0].quote || "Null";
+
+            callback(response);
         }
     );
-
-    return response;
 }
 
-function fetchQuote(id: number): string {
+function fetchQuote(id: number, callback: (quote: string) => void): void {
     const idString = id.toString();
-    let response: string = "";
 
     db.query(
         ["SELECT", DB_COLUMN, "FROM", DB_TABLE, "WHERE id =", idString].join(" "),
         (err, result, _fields) => {
+            let response: string = "";
+
             if (err) {
                 console.log(err);
                 response = "DATABASE ERROR";
-                return;
+            } else {
+                response = result[0].quote || "Null";
             }
-            response = result[0].quote || "Null";
+
+            callback(response);
         }
     );
-
-    return response;
 }
 
 export {
