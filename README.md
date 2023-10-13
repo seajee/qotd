@@ -22,3 +22,11 @@ To build and run the project run the following
 npm install
 npm run dev
 ```
+
+## Adding new quotes
+
+To add a new quote just run the following
+
+```bash
+QUOTE="Quote of the day" npm run add
+```

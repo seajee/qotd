@@ -4,7 +4,8 @@
     "description": "Quote of the day",
     "main": "index.js",
     "scripts": {
-        "dev": "tsc && node ./build"
+        "dev": "tsc && node ./build",
+        "add": "tsc && node ./build/scripts/add.js $QUOTE"
     },
     "author": "seajee",
     "contributors": [
