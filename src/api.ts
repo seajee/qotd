@@ -17,8 +17,8 @@ apiRouter.get("/quote/latest", (_req, res) => {
     });
 });
 
-apiRouter.get("/quote/:index", (req, res) => {
-    const id = parseInt(req.params.index);
+apiRouter.get("/quote/:id", (req, res) => {
+    const id = parseInt(req.params.id);
 
     if (isNaN(id)) {
         res.status(400).send({
