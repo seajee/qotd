@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import quotes from "./quotes";
+import { fetchLatestQuote, fetchQuote } from "./database";
 
 const apiRouter: Router = Router();
 
@@ -10,32 +10,29 @@ apiRouter.use((_req, res, next) => {
 });
 
 apiRouter.get("/quote/latest", (_req, res) => {
-    res.send({
-        quote: quotes[quotes.length - 1]
+    fetchLatestQuote((quote) => {
+        res.send({
+            quote: quote
+        });
     });
 });
 
-apiRouter.get("/quote/:index", (req, res) => {
-    const index = parseInt(req.params.index);
+apiRouter.get("/quote/:id", (req, res) => {
+    const id = parseInt(req.params.id);
 
-    if (isNaN(index)) {
+    if (isNaN(id)) {
         res.status(400).send({
             error: "Index is NaN"
         });
         return;
     }
 
-    if (index < 0 || index >= quotes.length) {
-        res.status(406).send({
-            error: "Out of Bounds"
+    fetchQuote(id, (quote) => {
+        res.send({
+            quote: quote
         });
-        return;
-    }
-
-    res.send({
-        quote: quotes[index]
     });
 });
 
 
-export = apiRouter;
+export { apiRouter };

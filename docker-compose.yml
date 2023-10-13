@@ -1,0 +1,13 @@
+version: "3.1"
+
+services:
+  db:
+    image: "docker.io/mariadb:${MARIADB_VERSION}"
+    restart: always
+    ports:
+      - "${DB_PORT}:3306"
+    volumes:
+      - ./db:/var/lib/mysql 
+    environment:
+      MARIADB_USER: "${DB_USER}"
+      MARIADB_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"

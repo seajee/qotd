@@ -1,13 +1,17 @@
 import express, { Application } from "express";
 import "dotenv/config"
 
-import staticRouter from "./static"
-import apiRouter from "./api";
+import { setupDatabase } from "./database";
+import { staticRouter } from "./static"
+import { apiRouter } from "./api";
 
 // Constants
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.SERVER_PORT || 8080;
 
 const app: Application = express();
+
+// Setup database
+setupDatabase();
 
 // Static content
 app.use("/", staticRouter);
