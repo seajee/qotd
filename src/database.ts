@@ -20,7 +20,6 @@ db.connect((err) => {
     if (err) throw err;
 });
 
-
 function setupDatabase(){
     db.query(
         ["CREATE", "DATABASE", "IF", "NOT", "EXISTS", DB_NAME].join(" "),
