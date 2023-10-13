@@ -32,7 +32,6 @@ apiRouter.get("/quote/:id", (req, res) => {
             quote: quote
         });
     });
-
 });
 
 
