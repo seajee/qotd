@@ -20,6 +20,23 @@ db.connect((err) => {
     if (err) throw err;
 });
 
+
+function setupDatabase(){
+    db.query(
+        ["CREATE", "DATABASE", "IF", "NOT", "EXISTS", DB_NAME].join(" "),
+        (err, _result, _fields) => {
+            if (err) throw err;
+        }
+    );
+
+    db.query(
+        ["CREATE", "DATABASE", DB_NAME].join(" "),
+        (err, _result, _fields) => {
+            if (err) throw err;
+        }
+    );
+}
+
 function fetchLatestQuote(): string {
     let response: string = "";
 
@@ -49,21 +66,8 @@ function fetchQuote(id: number): string {
     return response;
 }
 
-function setupDatabase(){
-    db.query(
-        ["CREATE", "DATABASE", "IF", "NOT", "EXISTS", DB_NAME].join(" "),
-        (err, _result, _fields) => {
-            if (err) throw err;
-        }
-    );
-
-    db.query(
-        ["CREATE", "DATABASE", DB_NAME].join(" "),
-        (err, _result, _fields) => {
-            if (err) throw err;
-        }
-    );
-}
-
-export { fetchLatestQuote };
-export { fetchQuote };
+export {
+    setupDatabase,
+    fetchLatestQuote,
+    fetchQuote
+};
