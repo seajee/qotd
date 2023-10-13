@@ -41,7 +41,11 @@ function fetchLatestQuote(): string {
     db.query(
         ["SELECT", DB_COLUMN, "FROM", DB_TABLE, "DESC LIMIT 0,1"].join(" "),
         (err, result, _fields) => {
-            if (err) throw err;
+            if (err) {
+                console.log(err);
+                response = "DATABASE ERROR"
+                return;
+            }
             response = result[0].quote;
         }
     );
@@ -56,7 +60,11 @@ function fetchQuote(id: number): string {
     db.query(
         ["SELECT", DB_COLUMN, "FROM", DB_TABLE, "WHERE id =", idString].join(" "),
         (err, result, _fields) => {
-            if (err) throw err;
+            if (err) {
+                console.log(err);
+                response = "DATABASE ERROR"
+                return;
+            }
             response = result[0].quote;
         }
     );
