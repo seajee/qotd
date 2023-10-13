@@ -57,7 +57,7 @@ function fetchLatestQuote(): string {
         (err, result, _fields) => {
             if (err) {
                 console.log(err);
-                response = "DATABASE ERROR"
+                response = "DATABASE ERROR";
                 return;
             }
             response = result[0].quote;
@@ -76,7 +76,7 @@ function fetchQuote(id: number): string {
         (err, result, _fields) => {
             if (err) {
                 console.log(err);
-                response = "DATABASE ERROR"
+                response = "DATABASE ERROR";
                 return;
             }
             response = result[0].quote;
