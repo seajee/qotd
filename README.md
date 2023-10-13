@@ -7,7 +7,6 @@ A website for showing quotes, everyday.
 This project uses MariaDB as it's database. To setup a container for it run the following
 
 ```bash
-mkdir db
 docker-compose up -d
 ```
 
