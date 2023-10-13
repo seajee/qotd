@@ -11,6 +11,12 @@ mkdir db
 docker-compose up -d
 ```
 
+Before running the server, the .env file must be present with a correct configuration.
+
+```bash
+cp .env.example .env
+```
+
 To build and run the project run the following
 
 ```bash
