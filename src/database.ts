@@ -52,14 +52,14 @@ function fetchQuote(id: number): string {
 function setupDatabase(){
     db.query(
         ["CREATE", "DATABASE", "IF", "NOT", "EXISTS", DB_NAME].join(" "),
-        (err, result, _fields) => {
+        (err, _result, _fields) => {
             if (err) throw err;
         }
     );
 
     db.query(
         ["CREATE", "DATABASE", DB_NAME].join(" "),
-        (err, result, _fields) => {
+        (err, _result, _fields) => {
             if (err) throw err;
         }
     );
