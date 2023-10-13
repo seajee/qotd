@@ -78,8 +78,7 @@ function fetchQuote(id: number, callback: (quote: string) => void): void {
                 console.log(err);
                 response = "DATABASE ERROR";
             } else {
-                const quote = result[0].quote;
-                response = (quote === undefined) ? "Null" : quote;
+                response = ("quote" in result[0]) ? result[0].quote : "";
             }
 
             callback(response);
