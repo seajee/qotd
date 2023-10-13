@@ -12,3 +12,5 @@ if (quote === "") {
 
 setupDatabase();
 addQuote(quote);
+
+process.exit();
