@@ -1,5 +1,7 @@
 # Quote of the day
 
+![preview](assets/preview.png)
+
 A website for showing quotes, everyday.
 
 ## Build and run
