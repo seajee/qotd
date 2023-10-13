@@ -1,15 +1,19 @@
 import sql from "mysql"
 
-const DB_COLUMN = process.env.DB_COLUMN;
-const DB_TABLE = process.env.DB_TABLE;
-const DB_NAME = process.env.DB_NAME;
+const {
+    DB_HOST,
+    DB_USER,
+    DB_PASSWORD,
+    DB_NAME,
+    DB_COLUMN,
+    DB_TABLE
+} = process.env;
 
 const db = sql.createConnection({
-    // TODO: Define this environment variables
-    // host: process.env.DB_HOST,       // Currently undefined
-    user: process.env.DB_USER,       // Currently undefined
-    password: process.env.DB_PASSWORD, // Currently undefined
-    // database: process.env.DB_NAME    // Currently undefined
+    host: DB_HOST,
+    user: DB_USER,
+    password: DB_PASSWORD,
+    database: DB_NAME
 });
 
 db.connect((err) => {
