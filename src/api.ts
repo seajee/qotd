@@ -1,8 +1,11 @@
-import { Router } from "express";
+import express, { Router } from "express";
 
-import { fetchLatestQuote, fetchQuote } from "./database";
+import { fetchLatestQuote, fetchQuote, addQuote } from "./database";
 
 const apiRouter: Router = Router();
+
+apiRouter.use(express.json());
+apiRouter.use(express.urlencoded({ extended: true }));
 
 apiRouter.use((_req, res, next) => {
     res.append("Access-Control-Allow-Origin", "*");
@@ -33,6 +36,23 @@ apiRouter.get("/quote/:id", (req, res) => {
         });
     });
 });
+/*
+apiRouter.post("/quote/latest", (req, res) => {
+    
+    if (req.body.quote.trim().length === 0) {
+        res.status(400).send({
+            error: "Quote is empty"
+        });
+        return;
+    }
+    if (req.body.quote === null) {
+        res.status(400).send({
+            error: "Quote is null"
+        });
+        return;
+    }
 
-
+    addQuote(req.body.quote, () => {});
+});
+*/
 export { apiRouter };

@@ -7,6 +7,8 @@ const themeSwitchImage = themeSwitchButton.firstElementChild;
 
 const quoteText = document.getElementById("quote");
 
+const description = document.getElementsByTagName('meta').namedItem('og:description');
+
 themeSwitchButton.onclick = () => {
     const bodyClass = document.body.classList;
 
@@ -24,6 +26,7 @@ const fetchqotd = () => {
         .then((response) => response.json())
         .then((data) => {
             quoteText.innerText = '"' + data.quote + '"';
+      	    description.setAttribute('content', data.quote)
         })
         .catch((err) => {
             quoteText.innerText = "ERROR: Couldn't fetch latest quote of the day";
